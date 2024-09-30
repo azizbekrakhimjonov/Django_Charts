@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+    <script>
+        const xValues = {{ x_values|safe }};
+        const datasets = {{ datasets|safe }};
+
+        new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    data: datasets[0],
+                    borderColor: "red",
+                    fill: false
+                },{
+                    data: datasets[1],
+                    borderColor: "green",
+                    fill: false
+                },{
+                    data: datasets[2],
+                    borderColor: "blue",
+                    fill: false
+                }]
+            },
+            options: {
+                legend: {display: false}
+            }
+        });
+    </script>
+</body>
+</html>
